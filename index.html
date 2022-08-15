@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Stock Picker</title>
+  <!--<link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">-->
+</head>
+
+<body>
+  <div class="bg-dark min-100-vh flex-row align-center justify-center">
+    <div class="col-11 col-sm-8">
+      <h1 class="text-light">Pick your stock!</h1>
+
+      <div class="card rounded bg-light p-3">
+        <div class="card-body">
+          <form id="stock-picker">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <label for="first-name">First Name</label>
+                <input type="text" class="form-input" name="first-name" placeholder="Enter first name" />
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="last-name">Last Name</label>
+                <input type="text" class="form-input" name="last-name" placeholder="Enter last name" />
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-input" name="email" placeholder="Enter email" />
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="istatus">Investment Status</label>
+                <input type="text" class="form-input" name="istatus" placeholder="Enter investment status" />
+              </div>
+            </div>
+            <fieldset class="group">
+              <legend>Select stock criteria</legend>
+              <ul class="checkbox">
+                <li>
+                  <input type="checkbox" id="cb1" value="dividend" />
+                  <label for="cb1">Dividends?</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb2" value="splits" />
+                  <label for="cb2">Splits?</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb3" value="gainers" />
+                  <label for="cb3">Price gainers?</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb4" value="financials" />
+                  <label for="cb4">Financials available?</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb5" value="us_exchange" />
+                  <label for="cb5">Major U.S. exchange?</label>
+                </li>
+              </ul>
+            </fieldset>
+            <button class="btn btn-block btn-danger">Submit Form</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Added link to the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
