@@ -1,7 +1,8 @@
 //TO DO: 
-//1). ADD BOTH FOR LOOPS TO EVERY ELSE IF - LEAVE AS LINK BC IT MIGHT WORK TO HOOK UP WITH FINHUBB RETURN
+//1). FIGURE OUT HOW NOT TO APPEND TICKERS
+//2). FIGURE OUT HOW TO ADD FINHUB API RESULTS AS TICKER LINKS
 //2). FIGURE OUT CSS FRAMEWORK
-//3). FIGURE OUT LOCAL STORAGE
+//3). CHECK IF OUT LOCAL STORAGE WORKS AFTER FIXING #1
 //4). ADD COMMENTS INTO ALL SCRIPTS
 
 var formEl = $('#stock-picker');
@@ -49,7 +50,9 @@ function handleFormSubmit(event) {
                 var tickersList = [tickers]
                 var newTickersList = localStorage.getItem("tickersList");
                   for (var j = 0; j < tickersList.length; j++) {
-                    // Creating elements, tablerow, tabledata, and anchor
+                    var xx =tickersList[j]
+                    for (var z = 0; z < xx.length; z++) {
+                      // Creating elements, tablerow, tabledata, and anchor
                     var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
@@ -59,8 +62,9 @@ function handleFormSubmit(event) {
                     //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = tickersList[j];
-                    link.href = tickersList[j];
+                    link.textContent = xx[z] ;
+                    console.log("tick", xx[z])
+                    //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
@@ -68,8 +72,11 @@ function handleFormSubmit(event) {
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    localStorage.setItem("newTickersList", newTickersList);
+                    }
+                    
+    
                   }
+                  localStorage.setItem("newTickersList", newTickersList); // set will replace what's already there
             }
             console.log(tickers)
             //document.getElementById(.Results).innerHTML = tickers
