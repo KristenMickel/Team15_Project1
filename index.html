@@ -7,8 +7,9 @@
   <title>Stock Picker</title>
   <!--<link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">-->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <!--<script src="https://cdn.tailwindcss.com"></script>-->
+  <!--<script>
     tailwind.config = {
       theme: {
         extend: {
@@ -18,16 +19,17 @@
         }
       }
     }
-  </script>
+  </script>-->
 </head>
 
 <body>
   <div class="bg-dark min-100-vh flex-row align-center justify-center">
     <div class="col-11 col-sm-8">
-      <h1 class="text-light">Pick your stock!</h1>
+      <h1 class="text-light">Technical Analysis Stock Picker</h1>
 
       <div class="card rounded bg-light p-3">
         <div class="card-body">
+
           <form id="stock-picker">
             <div class="row">
               <div class="col-12 col-sm-6">
@@ -66,17 +68,29 @@
                   <label for="cb3">Price gainers?</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="cb4" value="financials" />
-                  <label for="cb4">Financials available?</label>
+                  <input type="checkbox" id="cb4" value="losers" />
+                  <label for="cb4">Price losers?</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="cb5" value="us_exchange" />
-                  <label for="cb5">Major U.S. exchange?</label>
+                  <input type="checkbox" id="cb5" value="market_holidays" />
+                  <label for="cb5">Market holidays?</label>
                 </li>
               </ul>
             </fieldset>
-            <button type="submit" class="btn btn-block btn-danger">Submit Form</button>
-            <div class="Results">Results</div>
+
+            <main class="flex-row justify-center align-center col-auto p-4 bg-light">
+              <section class="card card-rounded col-7 bg-white">
+                <div class="text-center pt-4">
+                  <button type="submit" class="btn btn-block btn-danger" id="fetch-button">Submit</button>
+                </div>
+                <table class="card-body table mx-auto my-4">
+                  <th>
+                    <p class="my-4"></p>
+                  </th>
+                  <tbody id="repo-table" class="mx-auto text-center"></tbody>
+                </table>
+              </section>
+            </main>
           </form>
         </div>
       </div>
