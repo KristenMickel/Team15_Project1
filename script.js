@@ -10,55 +10,53 @@ var emailEl = $('input[name="email"]');
 var istatusEl = $('input[name="istatus"]');
 var tickers = [];
 
+
 function handleFormSubmit(event) {
+  
   event.preventDefault();
-
-  console.log('First Name:', firstNameEl.val());
-  console.log('Last Name:', lastNameEl.val());
-  console.log('Email:', emailEl.val());
-  console.log('Investment Status:', istatusEl.val());
-
   var checkedEl = $('input:checked');
   var selected = [];
 
   $.each(checkedEl, function () {
     selected.push($(this).val());
   });
-
-  console.log('Choices: ', selected);
   // a loop to loop over all the options
 
   for (var e = 0; e < selected.length; e++) {
     var option = selected[e]
     var tableBody = document.getElementById('repo-table');
     var fetchButton = document.getElementById('fetch-button');
-    if (selected[e] === 'dividend') {
-      fetch('https://api.polygon.io/v3/reference/dividends?ex_dividend_date=2022-08-01&pay_date>2022-08-15&limit=50&apiKey=hJomrI4jg8HGGK5i79q8up5jnVCEcpD9', {   
+
+    if (selected[e] === 'dividend') { 
+      fetch('https://api.polygon.io/v3/reference/dividends?ex_dividend_date=2022-08-18&limit=10&apiKey=hJomrI4jg8HGGK5i79q8up5jnVCEcpD9', {   
         method: 'GET',
       })
-        .then(function (response) {
-          return response.json();
-        })
+      .then(function (response) {
+        return response.json();})
         .then(function (data) {
-          console.log(data);
-          console.log(data.results);
           // combine all lists into a single list and then take the first 50 items
-
           var finalList = []; 
-
+          console.log(data)
           for (var x = 0; x < data.results.length; x++) {
             finalList.push(data.results[x].ticker)
             
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
-                    var link = document.createElement('p');
+                    var link = document.createElement('button');
+                    link.setAttribute("id", "profileButton")
+                    link.setAttribute("name",data.results[x].ticker)
+                    link.setAttribute("onclick", "viewProfile()")
+                    
+                    
+                    
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
                     //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
                     link.textContent = data.results[x].ticker ;
+    
                     //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
@@ -68,9 +66,8 @@ function handleFormSubmit(event) {
                     tableBody.appendChild(createTableRow);
           }
           // get the first 50 items from finalList
-          console.log("####", finalList)
           localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
-          console.log(tickers)
+
           //document.getElementById(.Results).innerHTML = tickers
         });
       }
@@ -82,8 +79,7 @@ function handleFormSubmit(event) {
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
-          console.log(data.results);
+
           // combine all lists into a single list and then take the first 50 items
 
           var finalList = []; 
@@ -95,13 +91,16 @@ function handleFormSubmit(event) {
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
+                   
+                   
+
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
                     //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
                     link.textContent = data.results[x].ticker ;
-                    //link.href = tickersList[j];
+                    
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
@@ -110,9 +109,8 @@ function handleFormSubmit(event) {
                     tableBody.appendChild(createTableRow);
           }
           // get the first 50 items from finalList
-          console.log("####", finalList)
+    
           localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
-          console.log(tickers)
           //document.getElementById(.Results).innerHTML = tickers
         });
       }
@@ -124,8 +122,7 @@ function handleFormSubmit(event) {
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
-          console.log(data.results);
+          
           // combine all lists into a single list and then take the first 50 items
 
           var finalList = []; 
@@ -152,9 +149,8 @@ function handleFormSubmit(event) {
                     tableBody.appendChild(createTableRow);
           }
           // get the first 50 items from finalList
-          console.log("####", finalList)
           localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
-          console.log(tickers)
+
           //document.getElementById(.Results).innerHTML = tickers
         });
       }
@@ -166,8 +162,6 @@ function handleFormSubmit(event) {
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
-          console.log(data.results);
           // combine all lists into a single list and then take the first 50 items
 
           var finalList = []; 
@@ -194,9 +188,9 @@ function handleFormSubmit(event) {
                     tableBody.appendChild(createTableRow);
           }
           // get the first 50 items from finalList
-          console.log("####", finalList)
+          
           localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
-          console.log(tickers)
+          
           //document.getElementById(.Results).innerHTML = tickers
         });
       }
@@ -242,6 +236,7 @@ function handleFormSubmit(event) {
           //document.getElementById(.Results).innerHTML = tickers
         });
       }*/
+      
   }
   
   // Clear input fields
@@ -254,3 +249,12 @@ function handleFormSubmit(event) {
 
 // Submit event on the form
 formEl.on('submit', handleFormSubmit);
+
+function viewProfile(){
+  console.log(event.target.name)
+  tickerp = event.target.name
+  console.log(tickerp)
+  getdata()
+}
+
+
