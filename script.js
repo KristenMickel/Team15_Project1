@@ -1,8 +1,6 @@
 //TO DO: 
-//1). FIGURE OUT HOW NOT TO APPEND TICKERS
 //2). FIGURE OUT HOW TO ADD FINHUB API RESULTS AS TICKER LINKS
 //2). FIGURE OUT CSS FRAMEWORK
-//3). CHECK IF OUT LOCAL STORAGE WORKS AFTER FIXING #1
 //4). ADD COMMENTS INTO ALL SCRIPTS
 
 var formEl = $('#stock-picker');
@@ -44,16 +42,14 @@ function handleFormSubmit(event) {
         .then(function (data) {
           console.log(data);
           console.log(data.results);
-            for (var i = 0; i < data.results.length; i++) {
-              //console.log(data.results[i].ticker)
-              tickers.push(data.results[i].ticker)
-                var tickersList = [tickers]
-                var newTickersList = localStorage.getItem("tickersList");
-                  for (var j = 0; j < tickersList.length; j++) {
-                    var xx =tickersList[j]
-                    for (var z = 0; z < xx.length; z++) {
-                      // Creating elements, tablerow, tabledata, and anchor
-                    var createTableRow = document.createElement('tr');
+          // combine all lists into a single list and then take the first 50 items
+
+          var finalList = []; 
+
+          for (var x = 0; x < data.results.length; x++) {
+            finalList.push(data.results[x].ticker)
+            
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
@@ -62,24 +58,20 @@ function handleFormSubmit(event) {
                     //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = xx[z] ;
-                    console.log("tick", xx[z])
+                    link.textContent = data.results[x].ticker ;
                     //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
-                    //APPEND CHILD MIGHT BE THE PROBLEM
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    }
-                    
-    
-                  }
-                  localStorage.setItem("newTickersList", newTickersList); // set will replace what's already there
-            }
-            console.log(tickers)
-            //document.getElementById(.Results).innerHTML = tickers
+          }
+          // get the first 50 items from finalList
+          console.log("####", finalList)
+          localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
+          console.log(tickers)
+          //document.getElementById(.Results).innerHTML = tickers
         });
       }
     else if (selected[e] === 'splits') {
@@ -92,36 +84,36 @@ function handleFormSubmit(event) {
         .then(function (data) {
           console.log(data);
           console.log(data.results);
-            for (var i = 0; i < data.results.length; i++) {
-              //console.log(data.results[i].ticker)
-              tickers.push(data.results[i].ticker)
-                var tickersList = [tickers]
-                var newTickersList = localStorage.getItem("tickersList");
-                  for (var j = 0; j < tickersList.length; j++) {
-                    // Creating elements, tablerow, tabledata, and anchor
-                    var createTableRow = document.createElement('tr');
+          // combine all lists into a single list and then take the first 50 items
+
+          var finalList = []; 
+
+          for (var x = 0; x < data.results.length; x++) {
+            finalList.push(data.results[x].ticker)
+            
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
-                    // Setting the text of link and the href of the link
+                    //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = tickersList[j];
-                    link.href = tickersList[j];
+                    link.textContent = data.results[x].ticker ;
+                    //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
-                    //APPEND CHILD MIGHT BE THE PROBLEM
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    localStorage.setItem("newTickersList", newTickersList);
-                  }
-            }
-            console.log(tickers)
-            //document.getElementById(.Results).innerHTML = tickers
+          }
+          // get the first 50 items from finalList
+          console.log("####", finalList)
+          localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
+          console.log(tickers)
+          //document.getElementById(.Results).innerHTML = tickers
         });
       }
     else if (selected[e] === 'gainers') {
@@ -134,36 +126,36 @@ function handleFormSubmit(event) {
         .then(function (data) {
           console.log(data);
           console.log(data.results);
-            for (var i = 0; i < data.results.length; i++) {
-              //console.log(data.results[i].ticker)
-              tickers.push(data.results[i].ticker)
-                var tickersList = [tickers]
-                var newTickersList = localStorage.getItem("tickersList");
-                  for (var j = 0; j < tickersList.length; j++) {
-                    // Creating elements, tablerow, tabledata, and anchor
-                    var createTableRow = document.createElement('tr');
+          // combine all lists into a single list and then take the first 50 items
+
+          var finalList = []; 
+
+          for (var x = 0; x < data.tickers.length; x++) {
+            finalList.push(data.tickers[x].ticker)
+            
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
-                    // Setting the text of link and the href of the link
+                    //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = tickersList[j];
-                    link.href = tickersList[j];
+                    link.textContent = data.tickers[x].ticker ;
+                    //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
-                    //APPEND CHILD MIGHT BE THE PROBLEM
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    localStorage.setItem("newTickersList", newTickersList);
-                  }
-            }
-            console.log(tickers)
-            //document.getElementById(.Results).innerHTML = tickers
+          }
+          // get the first 50 items from finalList
+          console.log("####", finalList)
+          localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
+          console.log(tickers)
+          //document.getElementById(.Results).innerHTML = tickers
         });
       }
     else if (selected[e] === 'losers') {
@@ -176,39 +168,39 @@ function handleFormSubmit(event) {
         .then(function (data) {
           console.log(data);
           console.log(data.results);
-            for (var i = 0; i < data.results.length; i++) {
-              //console.log(data.results[i].ticker)
-              tickers.push(data.results[i].ticker)
-                var tickersList = [tickers]
-                var newTickersList = localStorage.getItem("tickersList");
-                  for (var j = 0; j < tickersList.length; j++) {
-                    // Creating elements, tablerow, tabledata, and anchor
-                    var createTableRow = document.createElement('tr');
+          // combine all lists into a single list and then take the first 50 items
+
+          var finalList = []; 
+
+          for (var x = 0; x < data.tickers.length; x++) {
+            finalList.push(data.tickers[x].ticker)
+            
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
-                    // Setting the text of link and the href of the link
+                    //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = tickersList[j];
-                    link.href = tickersList[j];
+                    link.textContent = data.tickers[x].ticker ;
+                    //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
-                    //APPEND CHILD MIGHT BE THE PROBLEM
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    localStorage.setItem("newTickersList", newTickersList);
-                  }
-            }
-            console.log(tickers)
-            //document.getElementById(.Results).innerHTML = tickers
+          }
+          // get the first 50 items from finalList
+          console.log("####", finalList)
+          localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
+          console.log(tickers)
+          //document.getElementById(.Results).innerHTML = tickers
         });
       }
-    else if (selected[e] === 'market_holidays') {
+    /*else if (selected[e] === 'market_holidays') {
       fetch('https://api.polygon.io/v1/marketstatus/upcoming?apiKey=hJomrI4jg8HGGK5i79q8up5jnVCEcpD9', {
         method: 'GET',
       })
@@ -218,38 +210,38 @@ function handleFormSubmit(event) {
         .then(function (data) {
           console.log(data);
           console.log(data.results);
-            for (var i = 0; i < data.results.length; i++) {
-              //console.log(data.results[i].ticker)
-              date.push(data.results[i].date)
-                var datesList = [date]
-                var newDatesList = localStorage.getItem("datesList");
-                  for (var j = 0; j < datesList.length; j++) {
-                    // Creating elements, tablerow, tabledata, and anchor
-                    var createTableRow = document.createElement('tr');
+          // combine all lists into a single list and then take the first 50 items
+
+          var finalList = []; 
+
+          for (var x = 0; x < data.date.length; x++) {
+            finalList.push(data.date[x].ticker)
+            
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
-                    // Setting the text of link and the href of the link
+                    //Setting the text of link and the href of the link
                     //link.textContent = tickersList[j].html_url;
                     //link.href = tickersList[j].html_url;
-                    link.textContent = datesList[j];
-                    link.href = datesList[j];
+                    link.textContent = data.date[x].ticker ;
+                    //link.href = tickersList[j];
             
                     // Appending the link to the tabledata and then appending the tabledata to the tablerow
                     // The tablerow then gets appended to the tablebody
-                    //APPEND CHILD MIGHT BE THE PROBLEM
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
                     tableBody.appendChild(createTableRow);
-                    localStorage.setItem("newDatesList", newDatesList);
-                  }
-            }
-            console.log(date)
-            //document.getElementById(.Results).innerHTML = tickers
+          }
+          // get the first 50 items from finalList
+          console.log("####", finalList)
+          localStorage.setItem("newTickersList", JSON.stringify(finalList)); // set will replace what's already there, look at Module 6 Exercise 23
+          console.log(tickers)
+          //document.getElementById(.Results).innerHTML = tickers
         });
-      }
+      }*/
   }
   
   // Clear input fields
@@ -262,7 +254,3 @@ function handleFormSubmit(event) {
 
 // Submit event on the form
 formEl.on('submit', handleFormSubmit);
-
-
-
-
