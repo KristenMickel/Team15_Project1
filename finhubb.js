@@ -21,7 +21,7 @@ async function getdata(){
     "<div id= logo class= 'p-2 grid col-span-2 order-3' ><img id='logor' src="+pulledData.logo+"></img></div>"+
     "<div id= header class= 'order-4 border-b-4 w-11/12 border-black-600 col-span-2 text-center'>Key Statistics</div>"+
    
-   "<table  class='order-5 h-4 w-5/6 p-2 content-between' >"+
+   "<table class='order-5 h-4 w-5/6 p-2 content-between' >"+
    "<tbody >"+
    "<tr class= ' text-left border-b-2'>"+
    "<td class= 'text-lg font-bold'>Shareholder Equity</td>"+
