@@ -106,12 +106,17 @@ async function getdata(){
 
     "</div>"+
     "</div>")
+
     document.getElementById("close").addEventListener("click",closeOut)    
+
 }   
 
 function closeOut(){
     $("#card").remove()
     document.getElementById("results").style.display="grid";
+
+
+
 }
 
 document.getElementById("close2").addEventListener("click",closeOut2)

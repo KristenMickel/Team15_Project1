@@ -37,6 +37,8 @@ function handleFormSubmit(event) {
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     var link = document.createElement('button');
+
+
                     createTableRow.setAttribute("class", "profileBtn text-center")
                     createTableRow.setAttribute("id", "tableRow")
                     link.setAttribute("id", "profileButton")
@@ -65,12 +67,16 @@ function handleFormSubmit(event) {
             finalList.push(data.results[x].ticker)
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
+
                     var link = document.createElement('button');
+
                     createTableRow.setAttribute("class", "profileBtn text-center")
                     createTableRow.setAttribute("id", "tableRow")
                     link.setAttribute("id", "profileButton")
                     link.setAttribute("name",data.results[x].ticker)
                     link.setAttribute("onclick", "viewProfile()")
+
+
                     link.textContent = data.results[x].ticker ;
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
@@ -93,12 +99,16 @@ function handleFormSubmit(event) {
             finalList.push(data.tickers[x].ticker)
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
+
                     var link = document.createElement('button');
+
                     createTableRow.setAttribute("class", "profileBtn text-center")
                     createTableRow.setAttribute("id", "tableRow")
                     link.setAttribute("id", "profileButton")
                     link.setAttribute("name",data.results[x].ticker)
                     link.setAttribute("onclick", "viewProfile()");
+
+
                     link.textContent = data.tickers[x].ticker ;
                     tableData.appendChild(link);
                     createTableRow.appendChild(tableData);
@@ -120,6 +130,8 @@ function handleFormSubmit(event) {
           for (var x = 0; x < data.tickers.length; x++) {
             finalList.push(data.tickers[x].ticker)
             console.log(finalList)
+
+
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     var link = document.createElement('button');
