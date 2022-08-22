@@ -1,11 +1,7 @@
-
 apiKey = "token=cbqpkeaad3ibee6m2hlg"
 tickerp="cfg"
 low="52WeekLow"
 de="totalDebt/totalEquityAnnual"
-
-
- 
 
 async function getdata(){
     console.log(tickerp)
@@ -110,15 +106,17 @@ async function getdata(){
 
     "</div>"+
     "</div>")
-    document.getElementById("close").addEventListener("click",closeOut)
-    
+
+    document.getElementById("close").addEventListener("click",closeOut)    
+
 }   
-
-
 
 function closeOut(){
     $("#card").remove()
     document.getElementById("results").style.display="grid";
+
+
+
 }
 
 document.getElementById("close2").addEventListener("click",closeOut2)
@@ -128,6 +126,3 @@ function closeOut2(){
     document.getElementById("header").style.display="grid";
     document.getElementById("stock-picker").style.display="grid";
 }
-
- 
-
