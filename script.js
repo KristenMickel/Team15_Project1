@@ -44,6 +44,9 @@ function handleFormSubmit(event) {
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('button');
+                    
+                    createTableRow.setAttribute("class", "profileBtn text-center")
+                    createTableRow.setAttribute("id", "tableRow")
                     link.setAttribute("id", "profileButton")
                     link.setAttribute("name",data.results[x].ticker)
                     link.setAttribute("onclick", "viewProfile()")
@@ -90,7 +93,14 @@ function handleFormSubmit(event) {
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
-                    var link = document.createElement('p');
+                    var link = document.createElement('button');
+                    
+                    createTableRow.setAttribute("class", "profileBtn text-center")
+                    createTableRow.setAttribute("id", "tableRow")
+                    link.setAttribute("id", "profileButton")
+                    link.setAttribute("name",data.results[x].ticker)
+                    link.setAttribute("onclick", "viewProfile()")
+
                    
                    
 
@@ -133,7 +143,13 @@ function handleFormSubmit(event) {
             var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
-                    var link = document.createElement('p');
+                    var link = document.createElement('button');
+                    
+                    createTableRow.setAttribute("class", "profileBtn text-center")
+                    createTableRow.setAttribute("id", "tableRow")
+                    link.setAttribute("id", "profileButton")
+                    link.setAttribute("name",data.results[x].ticker)
+                    link.setAttribute("onclick", "viewProfile()");
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
                     //Setting the text of link and the href of the link
@@ -168,16 +184,17 @@ function handleFormSubmit(event) {
 
           for (var x = 0; x < data.tickers.length; x++) {
             finalList.push(data.tickers[x].ticker)
-<<<<<<< Updated upstream
-            
-            var createTableRow = document.createElement('tr');
-=======
             console.log(finalList)
-            var createTableRow =  document.createElement('tr');
->>>>>>> Stashed changes
+            var createTableRow = document.createElement('tr');
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
-                    var link = document.createElement('p');
+                    var link = document.createElement('button');
+                    
+                    createTableRow.setAttribute("class", "profileBtn text-center")
+                    createTableRow.setAttribute("id", "tableRow")
+                    link.setAttribute("id", "profileButton")
+                    link.setAttribute("name",data.results[x].ticker)
+                    link.setAttribute("onclick", "viewProfile()");
             
                     //LINK TO THE API CALLS FOR EACH TICKER FROM FINHUB
                     //Setting the text of link and the href of the link
@@ -250,6 +267,9 @@ function handleFormSubmit(event) {
   $('input[type="data"]').val('');
   $('input[type="response"]').val('');
   $('input[type="checkbox"]').prop('checked', false);
+  document.getElementById("header").style.display="none";
+  document.getElementById("stock-picker").style.display="none";
+  document.getElementById("results").style.display="grid";
 }
 
 // Submit event on the form
