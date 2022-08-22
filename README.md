@@ -14,4 +14,4 @@ User story:
 
 * It's done when I am successfully able to retrieve the user's filtered results and email from local storage in order to send it to them in email. 
 
-Team15_Project1
+Repository: Team15_Project1
