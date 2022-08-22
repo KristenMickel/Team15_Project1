@@ -168,8 +168,13 @@ function handleFormSubmit(event) {
 
           for (var x = 0; x < data.tickers.length; x++) {
             finalList.push(data.tickers[x].ticker)
+<<<<<<< Updated upstream
             
             var createTableRow = document.createElement('tr');
+=======
+            console.log(finalList)
+            var createTableRow =  document.createElement('tr');
+>>>>>>> Stashed changes
                     var tableData = document.createElement('td');
                     //var link = document.createElement('a');
                     var link = document.createElement('p');

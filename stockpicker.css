@@ -11,8 +11,13 @@ body{
 }
 
 
+<<<<<<< Updated upstream
 #card,#frame{
     grid-row: 1/1;
+=======
+#card,#frame,#results{
+    grid-row:  1/4;
+>>>>>>> Stashed changes
 }
 #card{
     height: 90%;
