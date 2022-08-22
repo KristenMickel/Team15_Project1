@@ -8,16 +8,13 @@ body{
     grid-template-rows: 1fr 4fr 5fr;
     margin: 0px;
     padding: 0px;
+    align-items: center;
+    position: absolute;
 }
 
 
-<<<<<<< Updated upstream
-#card,#frame{
-    grid-row: 1/1;
-=======
 #card,#frame,#results{
-    grid-row:  1/4;
->>>>>>> Stashed changes
+    grid-row: 1/4;
 }
 #card{
     height: 90%;
@@ -28,9 +25,22 @@ body{
 #logor{
     height: 5em;
 }
+#results{
+    display: none;
+
+    align-self: center;
+    justify-self: center;
+    height: 50%;
+    grid-template-rows: auto auto 8fr; 
+}
 
 #xOut{
     position: relative;
     top: 0px;
     right: 0px;
+}
+
+#tableRow:hover{
+    background-color: rgb(2 132 199);
+    color: white;
 }
